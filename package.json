@@ -10,7 +10,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@react-native-async-storage/async-storage": "^1.15.14",
+    "@react-native-async-storage/async-storage": "^1.17.7",
     "@react-navigation/native": "^6.0.10",
     "@react-navigation/native-stack": "^6.6.2",
     "@react-navigation/stack": "^6.2.1",
@@ -20,14 +20,14 @@
     "react-native-button": "^3.0.1",
     "react-native-device-info": "^9.0.2",
     "react-native-gesture-handler": "^2.4.2",
-    "react-native-get-random-values": "^1.7.2",
-    "react-native-ias": "^0.1.5",
+    "react-native-get-random-values": "^1.8.0",
+    "react-native-ias": "^0.2.0",
     "react-native-reanimated": "^2.8.0",
     "react-native-safe-area-context": "^3.4.1",
     "react-native-screens": "^3.13.1",
-    "react-native-share": "^7.3.9",
+    "react-native-share": "^7.6.4",
     "react-native-svg": "^12.3.0",
-    "react-native-webview": "^11.22.2"
+    "react-native-webview": "^11.22.3"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

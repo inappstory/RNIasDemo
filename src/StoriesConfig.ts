@@ -36,7 +36,7 @@ export const createAppearanceManager = () => {
       card: {
         title: {
           color: 'black',
-          font: '14px/16px "InternalPrimary"',
+          font: '14px/16px "InternalPrimaryFont"',
           padding: 8,
         },
         gap: 10,
@@ -44,26 +44,48 @@ export const createAppearanceManager = () => {
         variant: StoriesListCardViewVariant.QUAD,
         border: {
           radius: 20,
-          color: 'blue',
-          width: 2,
-          gap: 3,
+          color: 'black',
+          width: 0,
+          gap: 0,
         },
         boxShadow: null,
         opacity: 1,
         mask: {
           color: 'rgba(34, 34, 34, 0.3)',
         },
+        svgMask: {
+          cardMask: null,
+          overlayMask: [
+            {
+              mask: `<svg width="100%" height="auto" viewBox="0 0 63 63" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="57" cy="6" r="6" fill="#D9D9D9"/>
+</svg>`,
+              background: '#F31A37',
+            },
+          ],
+        },
         opened: {
           border: {
             radius: 20,
-            color: 'black',
-            width: 2,
-            gap: 3,
+            color: 'transparent',
+            width: 0,
+            gap: 0,
           },
           boxShadow: null,
           opacity: null,
           mask: {
             color: 'rgba(34, 34, 34, 0.1)',
+          },
+          svgMask: {
+            cardMask: null,
+            overlayMask: [
+              {
+                mask: `<svg width="100%" height="auto" viewBox="0 0 63 63" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="57" cy="6" r="6" fill="#D9D9D9"/>
+</svg>`,
+                background: '#F31A37',
+              },
+            ],
           },
         },
       },
