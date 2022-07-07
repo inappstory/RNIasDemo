@@ -17,6 +17,10 @@ import React, {useCallback} from 'react';
 import Button from 'react-native-button';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
+import {useIas} from 'react-native-ias';
+import {createAppearanceManager, createStoryManager} from '../StoriesConfig';
+
+import Toast from 'react-native-simple-toast';
 
 export function MainScreen({
   navigation,
@@ -50,6 +54,11 @@ export function MainScreen({
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
+
+  const {storyManager, appearanceManager} = useIas(
+    createStoryManager,
+    createAppearanceManager,
+  );
 
   return (
     <SafeAreaView style={[styles.container, backgroundStyle]}>
@@ -100,6 +109,72 @@ export function MainScreen({
             onPress={() => navigation.navigate('RNWelcome', {storyFeedId: 'undefinedFeed'})}>
             Fail loading
           </Button>
+          <View style={{height: 32}} />
+          <Button
+            containerStyle={{
+            padding: 10,
+            height: 'auto',
+            width: '100%',
+            overflow: 'hidden',
+            borderRadius: 6,
+            backgroundColor: '#0c62f3',
+          }}
+                  style={{fontSize: 18, color: 'white'}}
+                  styleDisabled={{color: 'red'}}
+                  onPress={() => {
+                    storyManager.showStory(17504, appearanceManager).then(res => {
+                      console.log({res});
+                      res.loaded === false && Toast.show('Failed to load story');
+                    })
+                  }}>
+            Open one story(success)
+          </Button>
+          <View style={{height: 32}} />
+          <Button
+            containerStyle={{
+            padding: 10,
+            height: 'auto',
+            width: '100%',
+            overflow: 'hidden',
+            borderRadius: 6,
+            backgroundColor: '#0c62f3',
+          }}
+                  style={{fontSize: 18, color: 'white'}}
+                  styleDisabled={{color: 'red'}}
+                  onPress={() => {
+                    storyManager.showStory("undefinedId", appearanceManager).then(res => {
+                      console.log({res});
+                      res.loaded === false && Toast.show('Failed to load story');
+                    })
+                  }}>
+            Open one story(fail)
+          </Button>
+          <View style={{height: 32}} />
+          <Button
+            containerStyle={{
+            padding: 10,
+            height: 'auto',
+            width: '100%',
+            overflow: 'hidden',
+            borderRadius: 6,
+            backgroundColor: '#0c62f3',
+          }}
+                  style={{fontSize: 18, color: 'white'}}
+                  styleDisabled={{color: 'red'}}
+            onPress={() => {
+              storyManager
+                .showOnboardingStories(appearanceManager)
+                .then(res => {
+                  let onboardingOpened = false;
+                  if (res.success && res.defaultListLength > 0) {
+                    onboardingOpened = true;
+                  }
+                  console.log({onboardingOpened});
+                });
+            }}>
+            Open onboarding
+          </Button>
+
           <View style={{height: 32}} />
         </View>
       </View>

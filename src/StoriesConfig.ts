@@ -38,6 +38,7 @@ export const createAppearanceManager = () => {
           color: 'black',
           font: '14px/16px "InternalPrimaryFont"',
           padding: 8,
+          position: 'cardOutsideBottom',
         },
         gap: 10,
         height: 100,
