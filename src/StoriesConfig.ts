@@ -123,6 +123,8 @@ export const createAppearanceManager = () => {
     .setStoryFavoriteReaderOptions({
       title: {
         content: 'Favorite',
+        font: '1.6rem/1.4 InternalPrimaryFont',
+        color: 'white',
       },
     });
 };

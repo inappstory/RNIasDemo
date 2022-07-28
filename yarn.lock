@@ -6143,10 +6143,10 @@
   "resolved" "https://registry.npmjs.org/react-native-gradle-plugin/-/react-native-gradle-plugin-0.0.6.tgz"
   "version" "0.0.6"
 
-"react-native-ias@^0.2.3":
-  "integrity" "sha512-K3Nr24NdrbiPfCqoK+XAqwO49kHu/BB8sdIal85+qYe9DDIafbtNAv7lGRRoeWPOfza/dC9xktVlv+HZGQzW3A=="
-  "resolved" "https://registry.npmjs.org/react-native-ias/-/react-native-ias-0.2.3.tgz"
-  "version" "0.2.3"
+"react-native-ias@^0.2.4":
+  "integrity" "sha512-rwpE4UB/aAnBAqxrb3RpGX5+7JUqn/49K0a8LC/IiHBc2ot4pzxA3YUQxEoE2XHZj+A+cIZsKTrcK1fhGc6EFw=="
+  "resolved" "https://registry.npmjs.org/react-native-ias/-/react-native-ias-0.2.4.tgz"
+  "version" "0.2.4"
   dependencies:
     "effector" "^22.1.2"
 
