@@ -6143,17 +6143,17 @@
   "resolved" "https://registry.npmjs.org/react-native-gradle-plugin/-/react-native-gradle-plugin-0.0.6.tgz"
   "version" "0.0.6"
 
-"react-native-ias@^0.2.4":
-  "integrity" "sha512-rwpE4UB/aAnBAqxrb3RpGX5+7JUqn/49K0a8LC/IiHBc2ot4pzxA3YUQxEoE2XHZj+A+cIZsKTrcK1fhGc6EFw=="
-  "resolved" "https://registry.npmjs.org/react-native-ias/-/react-native-ias-0.2.4.tgz"
-  "version" "0.2.4"
+"react-native-ias@^0.2.5":
+  "integrity" "sha512-g1zqrzRfJhHjFwVKQ/VuxzP+dXSVrs04vdKx7o2LMT9fOl/ewWQ55sc6kzpO5YWjrQ8M1wyVWCUSfb24ckiKPA=="
+  "resolved" "https://registry.npmjs.org/react-native-ias/-/react-native-ias-0.2.5.tgz"
+  "version" "0.2.5"
   dependencies:
     "effector" "^22.1.2"
 
-"react-native-reanimated@^2.8.0":
-  "integrity" "sha512-kJvf/UWLBMaGCs9X66MKq5zdFMgwx8D0nHnolbHR7s8ZnbLdb7TlQ/yuzIXqn/9wABfnwtNRI3CyaP1aHWMmZg=="
-  "resolved" "https://registry.npmjs.org/react-native-reanimated/-/react-native-reanimated-2.8.0.tgz"
-  "version" "2.8.0"
+"react-native-reanimated@^2.10.0":
+  "integrity" "sha512-jKm3xz5nX7ABtHzzuuLmawP0pFWP77lXNdIC6AWOceBs23OHUaJ29p4prxr/7Sb588GwTbkPsYkDqVFaE3ezNQ=="
+  "resolved" "https://registry.npmjs.org/react-native-reanimated/-/react-native-reanimated-2.10.0.tgz"
+  "version" "2.10.0"
   dependencies:
     "@babel/plugin-transform-object-assign" "^7.16.7"
     "@babel/preset-typescript" "^7.16.7"
