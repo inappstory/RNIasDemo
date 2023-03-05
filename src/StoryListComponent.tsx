@@ -1,4 +1,4 @@
-import { StyleSheet, View, useColorScheme } from "react-native";
+import { StyleSheet, View } from "react-native";
 import React, { useEffect, useRef, useState } from "react";
 import { createAppearanceManager, createStoryManager } from "./StoriesConfig.ts";
 
@@ -47,6 +47,8 @@ export function StoryListComponent({ scrollY, feedId, backgroundColor, animation
                     networkStatus: listLoadStatus.error.networkStatus,
                     networkMessage: listLoadStatus.error.networkMessage,
                 });
+            } else {
+                console.log("LOAD SUCCESS", listLoadStatus);
             }
         }, diff);
     };

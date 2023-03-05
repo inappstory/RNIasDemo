@@ -100,7 +100,7 @@ export function MainScreen({ navigation, route }: { navigation: NavigationProp<a
                         }}
                         style={{ fontSize: 18, color: "white" }}
                         styleDisabled={{ color: "red" }}
-                        onPress={() => navigation.navigate("RNWelcome", { storyFeedId: "undefinedFeed" })}>
+                        onPress={() => navigation.navigate("RNWelcome", { storyFeedId: "undefinedFeed", storyListAnimation: StoryListAnimation.default })}>
                         Fail loading
                     </Button>
                     <View style={{ height: 32 }} />
@@ -116,7 +116,7 @@ export function MainScreen({ navigation, route }: { navigation: NavigationProp<a
                         style={{ fontSize: 18, color: "white" }}
                         styleDisabled={{ color: "red" }}
                         onPress={() => {
-                            storyManager.showStory(17504, appearanceManager).then(res => {
+                            storyManager.showStory(26702, appearanceManager).then(res => {
                                 console.log({ res });
                                 res.loaded === false && Toast.show("Failed to load story");
                             });
@@ -165,6 +165,24 @@ export function MainScreen({ navigation, route }: { navigation: NavigationProp<a
                             });
                         }}>
                         Open onboarding
+                    </Button>
+
+                    <View style={{ height: 32 }} />
+                    <Button
+                        containerStyle={{
+                            padding: 10,
+                            height: "auto",
+                            width: "100%",
+                            overflow: "hidden",
+                            borderRadius: 6,
+                            backgroundColor: "#0c62f3",
+                        }}
+                        style={{ fontSize: 18, color: "white" }}
+                        styleDisabled={{ color: "red" }}
+                        onPress={() => {
+                            navigation.navigate("NetworkLogger");
+                        }}>
+                        NetworkLogger
                     </Button>
 
                     <View style={{ height: 32 }} />
