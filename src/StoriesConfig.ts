@@ -4,12 +4,11 @@ import {
     StoryManager,
     StoryReaderCloseButtonPosition,
     StoryReaderSwipeStyle,
-    AndroidWindowSoftInputMode,
+    StoriesListCardTitlePosition,
+    StoriesListCardTitleTextAlign,
 } from "react-native-ias";
 
 import { Linking } from "react-native";
-
-import * as AndroidKeyboardAdjust from "rn-android-keyboard-adjust";
 
 const storyManagerConfig = {
     apiKey: "test-key",
@@ -63,58 +62,42 @@ export const createAppearanceManager = () => {
             card: {
                 title: {
                     color: "black",
-                    font: 'bold normal 14px/16px "InternalPrimaryFont"',
-                    padding: 8,
-                    position: "cardOutsideBottom",
+                    font: 'normal normal 14px/16px "InternalPrimaryFont"',
+                    padding: "8px 4px",
+                    position: StoriesListCardTitlePosition.CARD_OUTSIDE_BOTTOM,
+                    // position: "cardOutsideBottom",
+                    textAlign: StoriesListCardTitleTextAlign.CENTER,
+                    // textAlign: "center",
+                    lineClamp: 2,
                 },
-                gap: 10,
+                gap: 5,
                 height: 100,
-                variant: StoriesListCardViewVariant.QUAD,
+                variant: StoriesListCardViewVariant.CIRCLE,
                 border: {
-                    radius: 20,
-                    color: "black",
-                    width: 0,
+                    radius: 0,
+                    color: "#0AD0A9",
+                    width: 4,
                     gap: 0,
                 },
                 boxShadow: null,
                 opacity: 1,
                 mask: {
-                    color: "rgba(34, 34, 34, 0.3)",
+                    color: "transparent",
                 },
-                svgMask: {
-                    cardMask: null,
-                    overlayMask: [
-                        {
-                            mask: `<svg width="100%" height="auto" viewBox="0 0 63 63" fill="none" xmlns="http://www.w3.org/2000/svg">
-<circle cx="57" cy="6" r="6" fill="#D9D9D9"/>
-</svg>`,
-                            background: "#F31A37",
-                        },
-                    ],
-                },
+                svgMask: null,
                 opened: {
                     border: {
-                        radius: 20,
-                        color: "transparent",
-                        width: 0,
+                        radius: 0,
+                        color: "#0AD0A9",
+                        width: 4,
                         gap: 0,
                     },
                     boxShadow: null,
                     opacity: null,
                     mask: {
-                        color: "rgba(34, 34, 34, 0.1)",
+                        color: "transparent",
                     },
-                    svgMask: {
-                        cardMask: null,
-                        overlayMask: [
-                            {
-                                mask: `<svg width="100%" height="auto" viewBox="0 0 63 63" fill="none" xmlns="http://www.w3.org/2000/svg">
-<circle cx="57" cy="6" r="6" fill="#D9D9D9"/>
-</svg>`,
-                                background: "#F31A37",
-                            },
-                        ],
-                    },
+                    svgMask: null,
                 },
             },
             favoriteCard: {
@@ -123,7 +106,11 @@ export const createAppearanceManager = () => {
                 },
             },
             layout: {
-                height: 0,
+                /**
+                 * 188 = topPadding(20) + bottomPadding(20) + card.height(100) + cardTitleSize(48 = card.title.padding(16 = 8 * 2) + textLines(32 = lineHeight * lineClamp (16 * 2))
+                 * Also in StoryListComponent set storyListContainer.height = 188 & storyLoader.height = 188
+                 */
+                height: 188,
                 backgroundColor: "transparent",
             },
             sidePadding: 20,

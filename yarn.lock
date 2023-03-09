@@ -6143,10 +6143,10 @@ react-native-gradle-plugin@^0.0.6:
   resolved "https://registry.npmjs.org/react-native-gradle-plugin/-/react-native-gradle-plugin-0.0.6.tgz"
   integrity sha512-eIlgtsmDp1jLC24dRn43hB3kEcZVqx6DUQbR0N1ABXGnMEafm9I3V3dUUeD1vh+Dy5WqijSoEwLNUPLgu5zDMg==
 
-react-native-ias@=0.2.21:
-  version "0.2.21"
-  resolved "https://registry.npmjs.org/react-native-ias/-/react-native-ias-0.2.21.tgz"
-  integrity sha512-cAGF/rr9UQ3VN+IF+8slpzAJYd9Y6Fe7pmOwNUlWeeg23DQyURL7AGDz/sHG7RE+n+VdbgDrRZOmZ9l3DapB9A==
+react-native-ias@=0.2.23:
+  version "0.2.23"
+  resolved "https://registry.npmjs.org/react-native-ias/-/react-native-ias-0.2.23.tgz"
+  integrity sha512-+ENMPgA8tNVbyQ96fuggCXvXLn6QKkzGkFbiLkjf4Po84CfpzwZvVqyCWEPJ/H0rXsbYMnsKHcBTBaQBXGw8FQ==
   dependencies:
     effector "^22.1.2"
 

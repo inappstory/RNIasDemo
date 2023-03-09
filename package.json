@@ -21,7 +21,7 @@
     "react-native-device-info": "^10.4.0",
     "react-native-gesture-handler": "^2.8.0",
     "react-native-get-random-values": "^1.8.0",
-    "react-native-ias": "=0.2.21",
+    "react-native-ias": "=0.2.23",
     "react-native-network-logger": "^1.14.0",
     "react-native-reanimated": "^2.10.0",
     "react-native-safe-area-context": "^3.4.1",

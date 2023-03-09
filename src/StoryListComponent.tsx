@@ -100,7 +100,11 @@ const styles = StyleSheet.create({
         alignItems: "flex-start",
     },
 
-    storyListContainer: { position: "relative", width: "100%", height: 140 },
+    storyListContainer: {
+        position: "relative",
+        width: "100%",
+        height: 188,
+    },
     storyList: {
         flex: 1,
         width: "100%",
@@ -110,7 +114,7 @@ const styles = StyleSheet.create({
     },
     storyLoader: {
         width: "100%",
-        height: 140,
+        height: 188,
         paddingVertical: 20,
         paddingLeft: 20,
         paddingRight: 0,
@@ -147,10 +151,10 @@ const StoryListLoader = ({ loadStatus }: { loadStatus: LoadStatus }) => {
                 speed={1}
                 backgroundColor="#f0f0f0"
                 foregroundColor="#777777">
-                <Rect x="0" y="0" rx="20" ry="20" width="100" height="100" />
-                <Rect x="110" y="0" rx="20" ry="20" width="100" height="100" />
-                <Rect x="220" y="0" rx="20" ry="20" width="100" height="100" />
-                <Rect x="330" y="0" rx="20" ry="20" width="100" height="100" />
+                <Rect x="0" y="0" rx="50" ry="50" width="100" height="100" />
+                <Rect x="105" y="0" rx="50" ry="50" width="100" height="100" />
+                <Rect x="210" y="0" rx="50" ry="50" width="100" height="100" />
+                <Rect x="315" y="0" rx="50" ry="50" width="100" height="100" />
             </ContentLoader>
         </Animated.View>
     );
