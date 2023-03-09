@@ -21,8 +21,14 @@ export enum StoryListAnimation {
     default,
     on_scroll,
 }
-type StoryListComponentProps = { scrollY: SharedValue<number>; feedId: Option<string>; backgroundColor: string; animation: StoryListAnimation };
-export function StoryListComponent({ scrollY, feedId, backgroundColor, animation }: StoryListComponentProps) {
+type StoryListComponentProps = {
+    scrollY: SharedValue<number>;
+    feedId: Option<string>;
+    backgroundColor: string;
+    animation: StoryListAnimation;
+    titleColor?: string;
+};
+export function StoryListComponent({ scrollY, feedId, backgroundColor, animation, titleColor }: StoryListComponentProps) {
     feedId = feedId || "default";
 
     const [loadStatus, setLoadStatus] = useState<LoadStatus>(LoadStatus.loading);
@@ -56,6 +62,11 @@ export function StoryListComponent({ scrollY, feedId, backgroundColor, animation
     const { storyManager, appearanceManager } = useIas(createStoryManager, createAppearanceManager);
 
     appearanceManager.setStoriesListOptions({
+        card: {
+            title: {
+                color: titleColor,
+            },
+        },
         layout: {
             backgroundColor,
         },

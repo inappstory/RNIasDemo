@@ -70,6 +70,7 @@ export function RNWelcome({
                         scrollY={scrollY}
                         feedId={route.params.storyFeedId}
                         backgroundColor={isDarkMode ? Colors.black : Colors.white}
+                        titleColor={isDarkMode ? Colors.white : Colors.black}
                         animation={route.params.storyListAnimation}
                     />
                     <Section title="Step One">
