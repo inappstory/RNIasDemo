@@ -6115,10 +6115,10 @@ react-native-codegen@^0.0.17:
     jscodeshift "^0.13.1"
     nullthrows "^1.1.1"
 
-react-native-device-info@^9.0.2, react-native-device-info@>=9.0.0:
-  version "9.0.2"
-  resolved "https://registry.npmjs.org/react-native-device-info/-/react-native-device-info-9.0.2.tgz"
-  integrity sha512-+IfYZ/OuKjnFf7SFfgIzEqynSeFngrIHc5KgHUIfXusLDXIFJ+LhRBCD7skqnraHrfmESUOMjLbNcvy4SVdwSA==
+react-native-device-info@^10.4.0, react-native-device-info@>=9.0.0:
+  version "10.4.0"
+  resolved "https://registry.npmjs.org/react-native-device-info/-/react-native-device-info-10.4.0.tgz"
+  integrity sha512-Z37e0HtpBvfkPRgv4xN7lXpvmJyzjwCXSFTXEkw6m2UgnnIsWlOD02Avu4hJXBlIMMazaW3ZLKal3o9h3AYvCw==
 
 react-native-gesture-handler@^2.8.0, "react-native-gesture-handler@>= 1.0.0":
   version "2.8.0"
@@ -6143,10 +6143,10 @@ react-native-gradle-plugin@^0.0.6:
   resolved "https://registry.npmjs.org/react-native-gradle-plugin/-/react-native-gradle-plugin-0.0.6.tgz"
   integrity sha512-eIlgtsmDp1jLC24dRn43hB3kEcZVqx6DUQbR0N1ABXGnMEafm9I3V3dUUeD1vh+Dy5WqijSoEwLNUPLgu5zDMg==
 
-react-native-ias@=0.2.19:
-  version "0.2.19"
-  resolved "https://registry.npmjs.org/react-native-ias/-/react-native-ias-0.2.19.tgz"
-  integrity sha512-J6Dxv43NVFsO2KIXcAY7gqgOUSxHuaTsqYlc4m/kqU+O1QUxvABje8vL79JdAyDyRm88IAtAzGL8vxTPuuSZFA==
+react-native-ias@=0.2.21:
+  version "0.2.21"
+  resolved "https://registry.npmjs.org/react-native-ias/-/react-native-ias-0.2.21.tgz"
+  integrity sha512-cAGF/rr9UQ3VN+IF+8slpzAJYd9Y6Fe7pmOwNUlWeeg23DQyURL7AGDz/sHG7RE+n+VdbgDrRZOmZ9l3DapB9A==
   dependencies:
     effector "^22.1.2"
 
