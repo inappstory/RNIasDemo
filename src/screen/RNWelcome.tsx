@@ -1,6 +1,6 @@
 import { NavigationProp, RouteProp } from "@react-navigation/native";
 import { SafeAreaView, StatusBar, StyleSheet, Text, View, useColorScheme } from "react-native";
-import React from "react";
+import React, { useRef } from "react";
 
 import type { Node } from "react";
 
@@ -8,6 +8,8 @@ import { Colors, DebugInstructions, Header, LearnMoreLinks, ReloadInstructions }
 
 import { StoryListAnimation, StoryListComponent } from "../StoryListComponent.tsx";
 import Animated, { useSharedValue, useAnimatedScrollHandler } from "react-native-reanimated";
+import Button from "react-native-button";
+import { StoriesListViewModel } from "react-native-ias";
 
 const Section = ({ children, title }): Node => {
     const isDarkMode = useColorScheme() === "dark";
@@ -55,6 +57,8 @@ export function RNWelcome({
         },
     });
 
+    const storiesListViewModel = useRef<StoriesListViewModel>(undefined);
+
     return (
         <SafeAreaView style={backgroundStyle}>
             <StatusBar barStyle={isDarkMode ? "light-content" : "dark-content"} />
@@ -71,7 +75,27 @@ export function RNWelcome({
                         feedId={route.params.storyFeedId}
                         backgroundColor={isDarkMode ? Colors.black : Colors.white}
                         animation={route.params.storyListAnimation}
+                        viewModelExporter={viewModel => (storiesListViewModel.current = viewModel)}
                     />
+                    <View style={{ height: 32 }} />
+                    <Button
+                        containerStyle={{
+                            padding: 10,
+                            height: "auto",
+                            width: "100%",
+                            overflow: "hidden",
+                            borderRadius: 6,
+                            backgroundColor: "#0c62f3",
+                        }}
+                        style={{ fontSize: 18, color: "white" }}
+                        styleDisabled={{ color: "red" }}
+                        onPress={async () => {
+                            if (storiesListViewModel.current) {
+                                console.log(await storiesListViewModel.current.reload());
+                            }
+                        }}>
+                        Reload StoriesList
+                    </Button>
                     <Section title="Step One">
                         Edit <Text style={styles.highlight}>App.js</Text> to change this screen and then come back to see your edits.
                     </Section>

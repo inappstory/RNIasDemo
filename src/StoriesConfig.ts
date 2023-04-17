@@ -1,15 +1,13 @@
 import {
     AppearanceManager,
+    StoriesListCardTitlePosition,
     StoriesListCardViewVariant,
     StoryManager,
     StoryReaderCloseButtonPosition,
     StoryReaderSwipeStyle,
-    AndroidWindowSoftInputMode,
 } from "react-native-ias";
 
 import { Linking } from "react-native";
-
-import * as AndroidKeyboardAdjust from "rn-android-keyboard-adjust";
 
 const storyManagerConfig = {
     apiKey: "test-key",
@@ -65,7 +63,7 @@ export const createAppearanceManager = () => {
                     color: "black",
                     font: 'bold normal 14px/16px "InternalPrimaryFont"',
                     padding: 8,
-                    position: "cardOutsideBottom",
+                    // position: StoriesListCardTitlePosition.CARD_INSIDE_BOTTOM,
                 },
                 gap: 10,
                 height: 100,

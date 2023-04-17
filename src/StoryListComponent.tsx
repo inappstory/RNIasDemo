@@ -9,6 +9,7 @@ import ContentLoader, { Rect } from "react-content-loader/native";
 import { Dimensions } from "react-native";
 import Animated, { useAnimatedStyle, interpolate, Extrapolation, useSharedValue, withTiming, Easing } from "react-native-reanimated";
 import type SharedValue from "react-native-reanimated";
+import StoriesListViewModel from "react-native-ias/types/StoriesListViewModel";
 
 const windowWidth = Dimensions.get("window").width;
 
@@ -21,13 +22,24 @@ export enum StoryListAnimation {
     default,
     on_scroll,
 }
-type StoryListComponentProps = { scrollY: SharedValue<number>; feedId: Option<string>; backgroundColor: string; animation: StoryListAnimation };
-export function StoryListComponent({ scrollY, feedId, backgroundColor, animation }: StoryListComponentProps) {
+type StoryListComponentProps = {
+    scrollY: SharedValue<number>;
+    feedId: Option<string>;
+    backgroundColor: string;
+    animation: StoryListAnimation;
+    viewModelExporter?: (viewModel: StoriesListViewModel) => void;
+};
+export function StoryListComponent({ scrollY, feedId, backgroundColor, animation, viewModelExporter }: StoryListComponentProps) {
     feedId = feedId || "default";
 
     const [loadStatus, setLoadStatus] = useState<LoadStatus>(LoadStatus.loading);
 
-    const loadStartAtRef = useRef(new Date().getTime());
+    const loadStartAtRef = useRef<number>(null);
+
+    const onLoadStart = () => {
+        loadStartAtRef.current = new Date().getTime();
+        setLoadStatus(LoadStatus.loading);
+    };
 
     const onLoadEnd = (listLoadStatus: ListLoadStatus) => {
         const minTime = 600;
@@ -55,6 +67,10 @@ export function StoryListComponent({ scrollY, feedId, backgroundColor, animation
 
     const { storyManager, appearanceManager } = useIas(createStoryManager, createAppearanceManager);
 
+    useEffect(() => {
+        onLoadStart();
+    }, []);
+
     appearanceManager.setStoriesListOptions({
         layout: {
             backgroundColor,
@@ -69,7 +85,9 @@ export function StoryListComponent({ scrollY, feedId, backgroundColor, animation
                 appearanceManager={appearanceManager}
                 loadStatus={loadStatus}
                 feedId={feedId}
+                onLoadStart={onLoadStart}
                 onLoadEnd={onLoadEnd}
+                viewModelExporter={viewModelExporter}
             />
         );
     } else if (animation === StoryListAnimation.on_scroll) {
@@ -80,7 +98,9 @@ export function StoryListComponent({ scrollY, feedId, backgroundColor, animation
                 appearanceManager={appearanceManager}
                 loadStatus={loadStatus}
                 feedId={feedId}
+                onLoadStart={onLoadStart}
                 onLoadEnd={onLoadEnd}
+                viewModelExporter={viewModelExporter}
             />
         );
     }
@@ -161,13 +181,17 @@ const AnimatedStoryList = ({
     storyManager,
     appearanceManager,
     feedId,
+    onLoadStart,
     onLoadEnd,
+    viewModelExporter,
 }: {
     loadStatus: LoadStatus;
     storyManager: StoryManager;
     appearanceManager: AppearanceManager;
     feedId: string;
+    onLoadStart: () => void;
     onLoadEnd: (listLoadStatus: ListLoadStatus) => void;
+    viewModelExporter: (viewModel: StoriesListViewModel) => void;
 }) => {
     const opacity = useSharedValue(0);
 
@@ -187,7 +211,14 @@ const AnimatedStoryList = ({
 
     return (
         <Animated.View style={[styles.storyList, style]}>
-            <StoriesList storyManager={storyManager} appearanceManager={appearanceManager} feed={feedId} onLoadEnd={onLoadEnd} />
+            <StoriesList
+                storyManager={storyManager}
+                appearanceManager={appearanceManager}
+                feed={feedId}
+                onLoadStart={onLoadStart}
+                onLoadEnd={onLoadEnd}
+                viewModelExporter={viewModelExporter}
+            />
         </Animated.View>
     );
 };
@@ -197,13 +228,17 @@ const AnimatedStoryListScroll = ({
     storyManager,
     appearanceManager,
     feedId,
+    onLoadStart,
     onLoadEnd,
+    viewModelExporter,
 }: {
     scrollY: SharedValue<number>;
     storyManager: StoryManager;
     appearanceManager: AppearanceManager;
     feedId: string;
+    onLoadStart: () => void;
     onLoadEnd: (listLoadStatus: ListLoadStatus) => void;
+    viewModelExporter: (viewModel: StoriesListViewModel) => void;
 }) => {
     const animatedStyles = useAnimatedStyle(() => {
         const opacity = interpolate(scrollY.value, [0, 200], [1, 0], { extrapolateRight: Extrapolation.CLAMP });
@@ -215,7 +250,14 @@ const AnimatedStoryListScroll = ({
 
     return (
         <Animated.View style={[animatedStyles]}>
-            <StoriesList storyManager={storyManager} appearanceManager={appearanceManager} feed={feedId} onLoadEnd={onLoadEnd} />
+            <StoriesList
+                storyManager={storyManager}
+                appearanceManager={appearanceManager}
+                feed={feedId}
+                onLoadStart={onLoadStart}
+                onLoadEnd={onLoadEnd}
+                viewModelExporter={viewModelExporter}
+            />
         </Animated.View>
     );
 };
