@@ -4,11 +4,11 @@ import React, { useCallback, useRef } from "react";
 import Button from "react-native-button";
 
 import { Colors } from "react-native/Libraries/NewAppScreen";
-import { StoriesListViewModel, useIas } from "react-native-ias";
-import { createAppearanceManager, createStoryManager } from "../StoriesConfig";
+import { type StoriesListViewModel } from "react-native-ias";
 
 import Toast from "react-native-simple-toast";
-import { StoryListAnimation, StoryListComponent } from "../StoryListComponent";
+import { StoryListComponent } from "../components/StoryListComponent.tsx";
+import { appearanceManager, storyManager } from "../services/StoryService.ts";
 
 export function MainScreen({ navigation, route }: { navigation: NavigationProp<any>; route: RouteProp<any> }) {
     useFocusEffect(
@@ -36,10 +36,8 @@ export function MainScreen({ navigation, route }: { navigation: NavigationProp<a
         backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
     };
 
-    const { storyManager, appearanceManager } = useIas(createStoryManager, createAppearanceManager);
-
     const storiesListViewModel = useRef<StoriesListViewModel>(undefined);
-    const viewModelExporter = useCallback(viewModel => (storiesListViewModel.current = viewModel), []);
+    const viewModelExporter = useCallback((viewModel: StoriesListViewModel) => (storiesListViewModel.current = viewModel), []);
 
     const [refreshing, setRefreshing] = React.useState(false);
 
@@ -57,13 +55,7 @@ export function MainScreen({ navigation, route }: { navigation: NavigationProp<a
                 style={styles.scrollView}
                 contentContainerStyle={styles.scrollViewInnerContainer}
                 refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}>
-                <StoryListComponent
-                    scrollY={null}
-                    feedId="rniasdemo"
-                    backgroundColor="transparent"
-                    animation={StoryListAnimation.default}
-                    viewModelExporter={viewModelExporter}
-                />
+                <StoryListComponent feedId="rniasdemo" backgroundColor="transparent" viewModelExporter={viewModelExporter} />
                 <View style={{ height: 0 }} />
                 <Button
                     containerStyle={{
@@ -95,7 +87,7 @@ export function MainScreen({ navigation, route }: { navigation: NavigationProp<a
                     }}
                     style={{ fontSize: 18, color: "white" }}
                     styleDisabled={{ color: "red" }}
-                    onPress={() => navigation.navigate("RNWelcome", { storyFeedId: "default", storyListAnimation: StoryListAnimation.default })}>
+                    onPress={() => navigation.navigate("RNWelcome", { storyFeedId: "default" })}>
                     Success loading (default)
                 </Button>
                 <View style={{ height: 32 }} />
@@ -111,23 +103,7 @@ export function MainScreen({ navigation, route }: { navigation: NavigationProp<a
                     }}
                     style={{ fontSize: 18, color: "white" }}
                     styleDisabled={{ color: "red" }}
-                    onPress={() => navigation.navigate("RNWelcome", { storyFeedId: "rniasdemo", storyListAnimation: StoryListAnimation.on_scroll })}>
-                    Success loading (opacity on scroll)
-                </Button>
-                <View style={{ height: 32 }} />
-
-                <Button
-                    containerStyle={{
-                        padding: 10,
-                        height: "auto",
-                        width: "100%",
-                        overflow: "hidden",
-                        borderRadius: 6,
-                        backgroundColor: "#0c62f3",
-                    }}
-                    style={{ fontSize: 18, color: "white" }}
-                    styleDisabled={{ color: "red" }}
-                    onPress={() => navigation.navigate("RNWelcome", { storyFeedId: "undefinedFeed", storyListAnimation: StoryListAnimation.default })}>
+                    onPress={() => navigation.navigate("RNWelcome", { storyFeedId: "undefinedFeed" })}>
                     Fail loading
                 </Button>
                 <View style={{ height: 32 }} />

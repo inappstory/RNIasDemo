@@ -2,14 +2,14 @@ import { NavigationProp, RouteProp } from "@react-navigation/native";
 import { SafeAreaView, StatusBar, StyleSheet, Text, View, useColorScheme } from "react-native";
 import React, { useRef } from "react";
 
-import type { Node } from "react";
-
 import { Colors, DebugInstructions, Header, LearnMoreLinks, ReloadInstructions } from "react-native/Libraries/NewAppScreen";
 
-import { StoryListAnimation, StoryListComponent } from "../StoryListComponent.tsx";
+import { StoryListComponent } from "../components/StoryListComponent";
 import Animated, { useSharedValue, useAnimatedScrollHandler } from "react-native-reanimated";
 import Button from "react-native-button";
 import { StoriesListViewModel } from "react-native-ias";
+
+import type { Node } from "react";
 
 const Section = ({ children, title }): Node => {
     const isDarkMode = useColorScheme() === "dark";
@@ -37,13 +37,7 @@ const Section = ({ children, title }): Node => {
     );
 };
 
-export function RNWelcome({
-    navigation,
-    route,
-}: {
-    navigation: NavigationProp<any>;
-    route: RouteProp<{ params: { storyFeedId: string; storyListAnimation: StoryListAnimation } }>;
-}) {
+export function RNWelcome({ navigation, route }: { navigation: NavigationProp<any>; route: RouteProp<{ params: { storyFeedId: string } }> }) {
     const isDarkMode = useColorScheme() === "dark";
 
     const backgroundStyle = {
@@ -71,10 +65,8 @@ export function RNWelcome({
                         height: 2000,
                     }}>
                     <StoryListComponent
-                        scrollY={scrollY}
                         feedId={route.params.storyFeedId}
                         backgroundColor={isDarkMode ? Colors.black : Colors.white}
-                        animation={route.params.storyListAnimation}
                         viewModelExporter={viewModel => (storiesListViewModel.current = viewModel)}
                     />
                     <View style={{ height: 32 }} />
